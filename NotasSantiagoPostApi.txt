@@ -1,0 +1,74 @@
+Referencias: 
+1) https://stackoverflow.com/questions/3516119/get-post-to-restful-web-service
+2) https://stackoverflow.com/questions/11388714/how-do-i-use-msxml2-serverxmlhttp-to-grab-data-from-another-site
+
+Script de Ejemplo para enviar un SQL:
+------------------
+
+Dim sUrl As String
+Dim variablesPost As String
+Dim response As String
+Dim xmlhttp
+
+Set sUrl = "http://tecno.sistemasiad.com.ar/public/api/SQL/111/A/CLASEXTECNO"
+
+Set xmlhttp = Server.CreateObject("MSXML2.ServerXMLHTTP")
+xmlhttp.open "POST", sURL, False
+xmlhttp.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+
+variablesPost = "sql=Insert into clientes (...) values (...)"
+
+xmlhttp.Send variablesPost
+
+xmlhttp.send()
+
+Dim response As String = xmlhttp.responseText
+Response.Write xmlhttp.responseText
+
+Set xmlhttp = Nothing
+
+
+
+Script de Ejemplo para enviar un ABM de Cliente:
+------------------
+
+Dim sUrl As String
+Dim response As String
+Dim xmlhttp
+
+Set sUrl = "http://tecno.sistemasiad.com.ar/public/api/BATCH/CLIENTE/111/A/CLASEXTECNO"
+
+Set xmlhttp = Server.CreateObject("MSXML2.ServerXMLHTTP")
+xmlhttp.open "POST", sURL, False
+xmlhttp.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+
+variablesPost = "id_externo=12345"
+variablesPost = variablesPost & "&nombre=Julia Maria"
+variablesPost = variablesPost & "&apellido=Perez"
+variablesPost = variablesPost & "&tipo_de_documento_id=......."
+variablesPost = variablesPost & "&nro_de_documento=......."
+variablesPost = variablesPost & "&domicilio=......."
+variablesPost = variablesPost & "&localidad_id=......."
+variablesPost = variablesPost & "&situacion_de_iva_id=......."
+variablesPost = variablesPost & "&telefono_fijo=......."
+variablesPost = variablesPost & "&telefono_celular=......."
+variablesPost = variablesPost & "&email_correo=......."
+variablesPost = variablesPost & "&observaciones=......."
+variablesPost = variablesPost & "&created_at=......."
+variablesPost = variablesPost & "&updated_at=......."
+variablesPost = variablesPost & "&user_id=......."
+variablesPost = variablesPost & "&zona_local_id=......."
+variablesPost = variablesPost & "&sucursal_id=......."
+variablesPost = variablesPost & "&id_de_importacion=......."
+variablesPost = variablesPost & "&fecha_de_baja=......."
+
+xmlhttp.Send variablesPost
+
+xmlhttp.send()
+
+Dim response As String = xmlhttp.responseText
+Response.Write xmlhttp.responseText
+
+Set xmlhttp = Nothing
+
+    
